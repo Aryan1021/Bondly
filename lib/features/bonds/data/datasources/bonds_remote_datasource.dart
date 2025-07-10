@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+
 import '../models/bond_model.dart';
 
 abstract class BondsRemoteDatasource {
@@ -6,6 +8,7 @@ abstract class BondsRemoteDatasource {
   Future<BondModel> getBondDetail(String isin);
 }
 
+@LazySingleton(as: BondsRemoteDatasource)
 class BondsRemoteDatasourceImpl implements BondsRemoteDatasource {
   final Dio dio;
 
