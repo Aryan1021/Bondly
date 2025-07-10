@@ -1,12 +1,15 @@
 import 'package:injectable/injectable.dart';
+
 import '../entities/bond.dart';
 import '../repository/bond_repository.dart';
 
 @injectable
-class GetBonds {
+class GetBondDetail {
   final BondRepository repository;
 
-  GetBonds(this.repository);
+  GetBondDetail(this.repository);
 
-  Future<List<Bond>> call() async => await repository.getBonds();
+  Future<Bond> call(String isin) async {
+    return await repository.getBondDetail(isin);
+  }
 }
