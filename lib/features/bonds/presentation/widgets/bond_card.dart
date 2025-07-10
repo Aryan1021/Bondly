@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bondly/features/bonds/domain/entities/bond.dart';
+import '../pages/bond_detail_page.dart';
 
 class BondCard extends StatelessWidget {
   final Bond bond;
@@ -29,7 +30,12 @@ class BondCard extends StatelessWidget {
         subtitle: Text('${bond.creditRating} • ${bond.issuerName}'),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
         onTap: () {
-          // TODO: Navigate to detail page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => BondDetailPage(isin: bond.isin),
+            ),
+          );
         },
       ),
     );
